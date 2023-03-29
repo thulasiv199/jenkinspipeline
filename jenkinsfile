@@ -6,7 +6,7 @@ pipeline {
                git branch: 'master', url: https://github.com/thulasiv199/jenkinspipeline.git
             }
         }
-            stage('Build'){
+            stage('build'){
                 steps{
                     sh "mvn clean install" 
                 }
