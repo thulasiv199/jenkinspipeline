@@ -1,17 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('checkout'){
+           stage('checkout'){
             steps{
-              checkout scm
-            }
-        }
+           git branch: 'main', url: 'https://github.com/thulasiv199/bashscripts.git'
+           }
+           }
             stage('build'){
                 steps{
                     sh "mvn clean install" 
                 }
             }
-        
-        
     }
     }
+    
+           
