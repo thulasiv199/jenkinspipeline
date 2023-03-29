@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('checkout'){
             steps{
-               git branch: 'master', url: https://github.com/thulasiv199/jenkinspipeline.git
+               git branch: 'master', url: 'https://github.com/thulasiv199/jenkinspipeline.git'
             }
         }
             stage('build'){
