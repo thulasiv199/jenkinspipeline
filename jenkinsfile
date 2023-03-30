@@ -2,6 +2,11 @@ pipeline {
    agent {
     label 'agent1'
     }
+    options {
+  timeout(activity: true, time: 10)
+   buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '3', numToKeepStr: '3')
+   }
+
     stages {
         stage('checkout'){
             steps{
@@ -20,7 +25,8 @@ pipeline {
                   junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                   }
                   }
-            
+           
+                    
             
         
   }
