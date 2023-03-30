@@ -26,16 +26,5 @@ pipeline {
                   }
                   }
          }
-     post{
-         always{
-             delete Dir()
-               }
-         failure{
-              echo "send an email"
-                }
-         success{
-               echo "job is success"
-                }
-                }
-             
+    
   }
