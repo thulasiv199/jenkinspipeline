@@ -28,7 +28,7 @@ pipeline {
             stage('deploy'){
                steps{
                  echo "deloying to dev environment"
-                 sshagent(['cd-key']) {
+                 sshagent(['cdkey']) {
                     sh "scp -o StrictHostKeyChecking=no taget/my-app-1.0-SNAPSHOT.jar ec2-user@3.17.181.30:/home/ec2-user"     
                  }
             }
