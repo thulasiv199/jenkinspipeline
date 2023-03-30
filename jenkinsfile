@@ -28,13 +28,13 @@ pipeline {
          }
      post{
          always{
-               delete Dir()
+             delete Dir()
                }
-               failure{
-                echo "send an email"
+         failure{
+              echo "send an email"
                 }
-                success{
-                echo "build is success"
+         success{
+               echo "job is success"
                 }
                 }
              
