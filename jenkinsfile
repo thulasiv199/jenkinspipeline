@@ -30,10 +30,10 @@ pipeline {
                  sh "mvn deploy"
                  sshagent(['cd-key']) {
                     sh "scp -o StrictHostKeyChecking=no taget/my-app-1.0-SNAPSHOT.jar ec2-user@3.17.181.30:/home/ec2-user"     
+                 }
+            }
          }
-         }
-         }
-         }
+      }
      post{
          always{
               deleteDir()
