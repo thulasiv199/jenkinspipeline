@@ -25,11 +25,11 @@ pipeline {
                   junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                   }
                   }
-            stage('deploy'){
+            stage('Deploy'){
                steps{
                  sh "deploy"
                  sshagent(['cd-key']) {
-                    sh "scp taget/myapp-1.0-SNAPSHOT.jar ec2-user@3.17.181.30:/home/ec2-user"     
+                    sh "scp -o StrictHostKeyChecking=no taget/myapp-1.0-SNAPSHOT.jar ec2-user@3.17.181.30:/home/ec2-user"     
          }
          }
          }
