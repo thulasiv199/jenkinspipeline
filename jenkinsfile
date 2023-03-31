@@ -60,15 +60,19 @@ pipeline {
                          }
                           environment{
                       target_user = "ec2-user"
-                       target_server = ""
+                       target_server = "18.217.119.228"
      }
-                     steps{
-                       echo "waiting"
+                        steps{
+                       echo "deloying to dev2 environment"
+                          sshagent(['maven-cd-key']){
+                            sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target_user@$target_server:/tmp"
+ }
+}
                           
  }
 }
 }
-}
+
 
 
                    
