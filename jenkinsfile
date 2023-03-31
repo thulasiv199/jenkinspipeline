@@ -54,25 +54,19 @@ pipeline {
 }
 }
 }
-                   stage('deploy into UAT'){
-                      input {
-                         message 'can i deploy?'
-                         }
-                          environment{
-                      target_user = "ec2-user"
-                       target_server = "18.217.119.228"
-     }
-                        steps{
-                       echo "deloying to dev2 environment"
-                          sshagent(['maven-cd-key']){
-                            sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target_user@$target_server:/tmp"
- }
-}
-                          
- }
+                  post{
+                    always {
+                      deleteDir()
+                      }
+                      failure {
+                      echo "send an email"
+                      }
+                      success {
+                       echo "job run successfully"
+                       }
 }
 }
-
+}
 
 
                    
