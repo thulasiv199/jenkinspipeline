@@ -27,15 +27,5 @@ pipeline {
              }
       
       }
-     post{
-         always{
-              deleteDir()
-               }
-              failure{
-                echo "send an email"
-                }
-               success{
-                echo "build is success"
-                }
-                }
+     
  }
