@@ -54,6 +54,7 @@ pipeline {
 }
 }
 }
+     }
             post {
                 always {
                    deleteDir()
@@ -64,6 +65,5 @@ pipeline {
                 success {
                     echo "job run successfully"
                        }
-}
 }
 }
