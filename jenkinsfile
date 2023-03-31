@@ -54,19 +54,16 @@ pipeline {
 }
 }
 }
-                  post {
-                    always {
-                      deleteDir()
+            post {
+                always {
+                   deleteDir()
                       }
-                      failure {
-                      echo "send an email"
+                failure {
+                    echo "send an email"
                       }
-                      success {
-                       echo "job run successfully"
+                success {
+                    echo "job run successfully"
                        }
 }
 }
 }
-
-
-                   
