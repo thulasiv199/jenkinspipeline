@@ -24,15 +24,8 @@ pipeline {
                   sh "mvn test"
                   junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                   }
-                  }
-            stage('deploy'){
-               steps{
-                 echo "deloying to dev environment"
-                 sshagent(['maven-cd-key']){
-                    sh "scp -o StrictHostKeyChecking=no taget/my-app-1.0-SNAPSHOT.jar ec2-user@172.31.9.66:/tmp"     
-                 }
-            }
-         }
+             }
+      
       }
      post{
          always{
