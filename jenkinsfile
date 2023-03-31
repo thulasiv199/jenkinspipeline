@@ -63,7 +63,7 @@ pipeline {
                     echo "send an email"
                       }
                 success {
-                    echo "job run successfully"
+                    echo " run successfully"
                        }
 }
 }
