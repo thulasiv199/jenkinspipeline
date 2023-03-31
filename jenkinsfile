@@ -25,7 +25,7 @@ pipeline {
                   junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                   }
              }
-           stage('deploy'){
+            stage('deploy'){
                steps{
                  echo "deloying to dev environment"
                  sshagent(['maven-cd-key']){
@@ -35,3 +35,4 @@ pipeline {
       }
      
  }
+}
