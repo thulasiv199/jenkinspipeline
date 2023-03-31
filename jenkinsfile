@@ -54,5 +54,21 @@ pipeline {
 }
 }
 }
+                   stage('deploy into UAT'){
+                      input {
+                         message 'can i deploy?'
+                         }
+                          environment{
+                      target_user = "ec2-user"
+                       target_server = ""
+     }
+                     steps{
+                       echo "waiting"
+                          
+ }
 }
 }
+}
+
+
+                   
