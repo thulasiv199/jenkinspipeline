@@ -3,8 +3,8 @@ pipeline {
     label 'agent1'
     }
     environment{
-     target-user= "ec2-user"
-     targetserver= "172.31.9.66"
+     target_user = "ec2-user"
+     target_server = "172.31.9.66"
      }
     options {
   timeout(activity: true, time: 10)
@@ -33,7 +33,7 @@ pipeline {
                steps{
                  echo "deloying to dev environment"
                  sshagent(['maven-cd-key']){
-                    sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target-user@$targetserver:/tmp"     
+                    sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target_user@$target_server:/tmp"     
                  }
             }
       }
