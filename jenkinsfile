@@ -2,10 +2,7 @@ pipeline {
     agent {
     label 'agent1'
     }
-    environment{
-     target_user = "ec2-user"
-     target_server = "172.31.9.66"
-     }
+   
     options {
   timeout(activity: true, time: 10)
    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '3', numToKeepStr: '3')
@@ -29,14 +26,33 @@ pipeline {
                   junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                   }
              }
-            stage('deploy'){
-               steps{
-                 echo "deloying to dev environment"
-                 sshagent(['maven-cd-key']){
-                    sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target_user@$target_server:/tmp"     
+            stage('deploy to two'){
+               parallel{
+                 stage('server1'){
+                   environment{
+                      target_user = "ec2-user"
+                       target_server = "172.31.9.66"
+     }
+                     steps{
+                       echo "deloying to dev1 environment"
+                          sshagent(['maven-cd-key']){
+                            sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target_user@$target_server:/tmp"     
                  }
             }
       }
-     
+                   stage('server2'){
+                    environment{
+                      target_user = "ec2-user"
+                       target_server = "18.191.124.52"
+     }
+                     steps{
+                       echo "deloying to dev2 environment"
+                          sshagent(['maven-cd-key']){
+                            sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target_user@$target_server:/tmp"
  }
+}
+}
+}
+}
+}
 }
