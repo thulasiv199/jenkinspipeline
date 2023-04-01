@@ -6,8 +6,7 @@ package com.mycompany.app;
 public class App
 {
 
-    private final String message = "Hello SUV!";
-
+    private final String message = "Hello ABCD
     public App() {}
 
     public static void main(String[] args) {
