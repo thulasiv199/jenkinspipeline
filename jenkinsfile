@@ -31,7 +31,7 @@ pipeline {
                  stage('server1'){
                    environment{
                       target_user = "ec2-user"
-                       target_server = "172.31.0.255"
+                       target_server = "18.119.116.202"
      }
                      steps{
                        echo "deloying to dev1 environment"
@@ -43,7 +43,7 @@ pipeline {
                    stage('server2'){
                     environment{
                       target_user = "ec2-user"
-                       target_server = "172.31.9.66"
+                       target_server = "3.142.174.87"
      }
                      steps{
                        echo "deloying to dev2 environment"
