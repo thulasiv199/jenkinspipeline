@@ -26,7 +26,7 @@ pipeline {
                   junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                   }
              }
-            stage('deploy to two'){
+/*            stage('deploy to two'){
                parallel{
                  stage('server1'){
                    environment{
@@ -51,7 +51,7 @@ pipeline {
                             sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target_user@$target_server:/tmp"
  }
 }
-}
+}*/
 }
 }
      }
