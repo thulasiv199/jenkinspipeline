@@ -35,7 +35,7 @@ pipeline {
      }
                      steps{
                        echo "deloying to dev1 environment"
-                          sshagent(['maven-cd-key']){
+                          sshagent(['globalkey']){
                             sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target_user@$target_server:/tmp"     
                  }
             }
@@ -47,7 +47,7 @@ pipeline {
      }
                      steps{
                        echo "deloying to dev2 environment"
-                          sshagent(['maven-cd-key']){
+                          sshagent(['globalkey']){
                             sh "scp -o StrictHostKeyChecking=no target/my-app-1.0-SNAPSHOT.jar $target_user@$target_server:/tmp"
  }
 }
